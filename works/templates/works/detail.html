@@ -1,0 +1,14 @@
+{% extends "works/base.html" %}
+{% block title %}{{ project.title }}{% endblock %}
+{% block content %}
+<section class="detail">
+  <a class="back" href="{% url 'works:home' %}#works">← بازگشت به نمونه‌کارها</a>
+  <span class="type">{{ project.category.name }}</span>
+  <h1>{{ project.title }}</h1>
+  <p class="sub">{{ project.summary }}</p>
+  {% if project.image %}<img class="cover" src="{{ project.image.url }}" alt="{{ project.title }}">{% endif %}
+  {% if project.description %}<div class="desc">{{ project.description|linebreaks }}</div>{% endif %}
+  <div class="tags">{% for t in project.tag_list %}<span>{{ t }}</span>{% endfor %}</div>
+  {% if project.link %}<a class="btn primary" href="{{ project.link }}" target="_blank" rel="noopener">دیدن / امتحان کردن پروژه</a>{% endif %}
+</section>
+{% endblock %}

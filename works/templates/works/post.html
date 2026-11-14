@@ -1,0 +1,12 @@
+{% extends "works/base.html" %}
+{% load jalali %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+<article class="detail">
+  <a class="back" href="{% url 'works:blog' %}">← بازگشت به وبلاگ</a>
+  <span class="type">{{ post.created|jdate }}</span>
+  <h1>{{ post.title }}</h1>
+  {% if post.cover %}<img class="cover" src="{{ post.cover.url }}" alt="{{ post.title }}">{% endif %}
+  <div class="desc">{{ post.body|linebreaks }}</div>
+</article>
+{% endblock %}

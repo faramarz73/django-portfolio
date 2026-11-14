@@ -1,0 +1,20 @@
+{% extends "works/base.html" %}
+{% load jalali %}
+{% block title %}وبلاگ{% endblock %}
+{% block content %}
+<section>
+  <h2>وبلاگ</h2>
+  <p class="sub">آموزش‌ها و تجربه‌های من دربارهٔ ربات‌سازی و توسعه.</p>
+  <div class="grid">
+    {% for p in posts %}
+    <article class="card">
+      {% if p.cover %}<a href="{{ p.get_absolute_url }}"><img src="{{ p.cover.url }}" alt="{{ p.title }}" loading="lazy"></a>{% endif %}
+      <span class="type">{{ p.created|jdate }}</span>
+      <h3><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
+      <p>{{ p.summary }}</p>
+      <a class="go" href="{{ p.get_absolute_url }}">ادامهٔ مطلب ←</a>
+    </article>
+    {% empty %}<p>هنوز مقاله‌ای منتشر نشده است.</p>{% endfor %}
+  </div>
+</section>
+{% endblock %}

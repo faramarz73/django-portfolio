@@ -1,0 +1,18 @@
+{% extends "works/base.html" %}
+{% block title %}سفارش پروژه{% endblock %}
+{% block content %}
+<section class="detail">
+  <h1>سفارش پروژه</h1>
+  <p class="sub">ربات تلگرام، وب‌سایت یا اپلیکیشن می‌خواهید؟ فرم را پر کنید تا با شما تماس بگیرم.</p>
+  <form method="post" class="form" novalidate>
+    {% csrf_token %}
+    {% for f in form.visible_fields %}{% if f.name != "website" %}
+      <label for="{{ f.id_for_label }}">{{ f.label }}</label>
+      {{ f }}
+      {% for e in f.errors %}<span class="err">{{ e }}</span>{% endfor %}
+    {% endif %}{% endfor %}
+    <div class="hp" aria-hidden="true">{{ form.website }}</div>
+    <button class="btn primary" type="submit">ارسال سفارش</button>
+  </form>
+</section>
+{% endblock %}

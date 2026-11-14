@@ -1,0 +1,45 @@
+{% extends "works/base.html" %}
+{% block content %}
+<div class="hero">
+  <div>
+    <h1>{% if profile %}{{ profile.headline }}{% else %}ربات تلگرام، وب‌سایت و اپلیکیشن{% endif %}</h1>
+    <p>{% if profile and profile.bio %}{{ profile.bio }}{% else %}نمونه‌کارها را ببینید و اگر پسندیدید، دنبالم کنید.{% endif %}</p>
+    <div class="btns">
+      <a class="btn primary" href="#works">دیدن نمونه‌کارها</a>
+      <a class="btn" href="{% url 'works:order' %}">سفارش پروژه</a>
+    </div>
+  </div>
+  <div class="chat" aria-label="نمونه گفتگو با یک ربات">
+    <div class="chat-head"><span class="dot">🤖</span>ربات فروشگاه نمونه</div>
+    <div class="msg me">سلام، قیمت اشتراک ماهانه چنده؟</div>
+    <div class="msg bot">سلام! اشتراک ماهانه ۱۹۰٬۰۰۰ تومان است. می‌خواهید فعال کنم؟</div>
+    <div class="msg me">بله لطفاً</div>
+    <div class="msg bot">لینک پرداخت امن برایتان ارسال شد ✅</div>
+  </div>
+</div>
+
+<section id="works">
+  <h2>نمونه‌کارها</h2>
+  <p class="sub">برای دیدن هر دسته، آن را انتخاب کنید.</p>
+  <div class="filters">
+    <a href="{% url 'works:home' %}#works" {% if not active %}aria-current="true"{% endif %}>همه</a>
+    {% for c in categories %}
+      <a href="?cat={{ c.slug }}#works" {% if active == c.slug %}aria-current="true"{% endif %}>{{ c.name }}</a>
+    {% endfor %}
+  </div>
+  <div class="grid">
+    {% for p in projects %}
+    <article class="card">
+      {% if p.image %}<a href="{{ p.get_absolute_url }}"><img src="{{ p.image.url }}" alt="{{ p.title }}" loading="lazy"></a>{% endif %}
+      <span class="type">{{ p.category.name }}</span>
+      <h3><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
+      <p>{{ p.summary }}</p>
+      <div class="tags">{% for t in p.tag_list %}<span>{{ t }}</span>{% endfor %}</div>
+      <a class="go" href="{{ p.get_absolute_url }}">جزئیات پروژه ←</a>
+    </article>
+    {% empty %}
+    <p>هنوز پروژه‌ای در این دسته ثبت نشده است.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

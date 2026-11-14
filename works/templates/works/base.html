@@ -1,0 +1,32 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{% if profile %}{{ profile.name }}{% else %}نمونه‌کارها{% endif %}{% endblock %}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="{% static 'works/style.css' %}">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="{% url 'works:home' %}">{% if profile %}{{ profile.name }}{% else %}نام شما{% endif %}</a>
+    <nav><a href="{% url 'works:home' %}#works">نمونه‌کارها</a><a href="{% url 'works:blog' %}">وبلاگ</a><a href="{% url 'works:order' %}">سفارش پروژه</a><a href="{% url 'works:home' %}#follow">دنبال کردن</a></nav>
+  </header>
+  {% if messages %}<div class="flash">{% for m in messages %}<p>{{ m }}</p>{% endfor %}</div>{% endif %}
+  <main>{% block content %}{% endblock %}
+    <section id="follow">
+      <div class="follow">
+        <h2>مرا دنبال کنید</h2>
+        <p>تازه‌ترین پروژه‌ها و آموزش‌ها را در این شبکه‌ها منتشر می‌کنم.</p>
+        <div class="links">
+          {% for s in socials %}<a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.name }}</a>
+          {% empty %}<span>از پنل مدیریت، شبکه‌های اجتماعی را اضافه کنید.</span>{% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>© {% now "Y" %} — همهٔ حقوق محفوظ است.</footer>
+</div>
+</body>
+</html>
