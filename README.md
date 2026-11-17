@@ -11,7 +11,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 - سایت: https://code-nevesht.onrender.com
-- پنل مدیریت: http://127.0.0.1:8000/admin/
+- پنل مدیریت: https://code-nevesht.onrender.com/admin/
 
 ## بعد از اولین اجرا (در پنل مدیریت)
 1. **پروفایل** بسازید (نام، عنوان، معرفی، لینک سفارش) – فقط یک رکورد.
