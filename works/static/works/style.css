@@ -1,4 +1,10 @@
-:root{--bg:#eef2f7;--surface:#fff;--ink:#14213d;--muted:#5b6785;--line:#d5dce8;--accent:#1f6feb;--accent-ink:#fff;--me:#1f6feb;--bot:#e4e9f2;color-scheme:light}
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('./fonts/Vazirmatn.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}:root{--bg:#eef2f7;--surface:#fff;--ink:#14213d;--muted:#5b6785;--line:#d5dce8;--accent:#1f6feb;--accent-ink:#fff;--me:#1f6feb;--bot:#e4e9f2;color-scheme:light}
 @media (prefers-color-scheme:dark){:root{--bg:#0e1424;--surface:#161e33;--ink:#e8edf8;--muted:#93a0bf;--line:#27314d;--accent:#5b9dff;--accent-ink:#0e1424;--me:#2f6fdc;--bot:#222c47;color-scheme:dark}}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.9}
