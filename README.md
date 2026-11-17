@@ -10,7 +10,7 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
 ```
-- سایت: https://code-nevesht.onrender.com/?utm_source=chatgpt.com
+- سایت: https://code-nevesht.onrender.com
 - پنل مدیریت: http://127.0.0.1:8000/admin/
 
 ## بعد از اولین اجرا (در پنل مدیریت)
